@@ -1,3 +1,19 @@
+'''
+Oct 24, 2020
+
+Discord bot by Kyle Ng and Dennis Trang
+
+Requires .env for bot token and server ID
+
+To Do:
+* Display current poll
+* Update poll embed on reaction
+* Close poll?
+* Weather report (from Google Weather?)
+* Kick command
+* Coin flip
+* Roll dice
+'''
 import os
 
 from dotenv import load_dotenv
@@ -37,6 +53,7 @@ async def create_poll(ctx, question: str, option_1: str, option_2: str):
     )
     poll_embed.add_field(name="1️⃣ "+option_1, value="\u200b", inline=False)
     poll_embed.add_field(name="2️⃣ "+option_2, value="\u200b", inline=False)
+    poll_embed.set_footer(text="Choose with the reactions below!")
 
     embedded = await ctx.send(embed=poll_embed)
     await embedded.add_reaction(emoji="1️⃣")
