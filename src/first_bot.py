@@ -49,30 +49,21 @@ async def on_ready():
 async def hello(ctx):
     await ctx.send("heyo!")
 
-@bot.command(name='create_poll', help='Create a new poll')
-async def create_poll(ctx, question: str, option_1: str, option_2: str):
-    # response = question + "\n"
-    # response += ":one: " + option_1 + "\n"
-    # response += ":two: " + option_2 + "\n"
+# @bot.command(name='create_poll', help='Create a new poll')
+# async def create_poll(ctx, question: str, option_1: str, option_2: str):
+#     poll_embed = discord.Embed(
+#         title = question
+#     )
+#     poll_embed.add_field(name="1️⃣ "+option_1, value="\u200b", inline=False)
+#     poll_embed.add_field(name="2️⃣ "+option_2, value="\u200b", inline=False)
+#     poll_embed.set_footer(text="Choose with the reactions below!")
 
-    # poll_message = await ctx.send(response)
-    # await poll_message.add_reaction(emoji="1️⃣")
-    # await poll_message.add_reaction(emoji="2️⃣")
-    print("new poll created!")
+#     embedded = await ctx.send(embed=poll_embed)
+#     await embedded.add_reaction(emoji="1️⃣")
+#     await embedded.add_reaction(emoji="2️⃣")
 
-    poll_embed = discord.Embed(
-        title = question
-    )
-    poll_embed.add_field(name="1️⃣ "+option_1, value="\u200b", inline=False)
-    poll_embed.add_field(name="2️⃣ "+option_2, value="\u200b", inline=False)
-    poll_embed.set_footer(text="Choose with the reactions below!")
-
-    embedded = await ctx.send(embed=poll_embed)
-    await embedded.add_reaction(emoji="1️⃣")
-    await embedded.add_reaction(emoji="2️⃣")
-
-@bot.command(name="create_big_poll", help="Create a poll with more than 2 options")
-async def create_big_poll(ctx, *args):
+@bot.command(name="create_big_poll", help="Create a new poll")
+async def create_poll(ctx, *args):
     question = args[0]
     options = args[1:]
 
